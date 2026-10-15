@@ -1,0 +1,25 @@
+# Install/merge this as .github/workflows/architecture-guard.yml.
+# The architecture contract JSON must already be customized and committed.
+# Extend steps with your language-specific dependency linter, route inventory,
+# runtime canonical-spy checks, and golden cross-consumer contract tests.
+name: Architecture Integrity
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  architecture-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Contract inventory and Python import boundaries
+        run: python .agents/skills/architecture-integrity-guard/scripts/arch_guard.py check --repo . --config architecture/canonical-contracts.json
+      # REQUIRED BEFORE CLAIMING FULL ENFORCEMENT — replace for your stack:
+      # - name: TS/JS forbidden dependencies
+      #   run: npm ci && npx depcruise --config .dependency-cruiser.cjs src
+      # - name: Runtime path + cross-consumer golden cases
+      #   run: python -m pytest tests/architecture -q
+      # Mark this workflow as a required check in branch protection.

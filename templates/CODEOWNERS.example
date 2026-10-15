@@ -1,0 +1,11 @@
+# Replace @your-org/architecture-owners with a real GitHub team.
+# Requires branch protection + required Code Owner review to be effective.
+/architecture/canonical-contracts.json @your-org/architecture-owners
+/architecture/contracts/ @your-org/architecture-owners
+/tests/architecture/ @your-org/architecture-owners
+/.dependency-cruiser.cjs @your-org/architecture-owners
+/.github/workflows/architecture-guard.yml @your-org/architecture-owners
+/.github/CODEOWNERS @your-org/architecture-owners
+/.claude/settings.json @your-org/architecture-owners
+/.claude/skills/architecture-integrity-guard/ @your-org/architecture-owners
+/.agents/skills/architecture-integrity-guard/ @your-org/architecture-owners

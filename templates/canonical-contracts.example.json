@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "capabilities": [
+    {
+      "id": "order-normalization-REPLACE-ME",
+      "canonical": "src/domain/orders/normalize.py",
+      "consumer_globs": [
+        "src/api/orders/*_route.py",
+        "src/workers/order_*.py"
+      ],
+      "consumers": [
+        "src/api/orders/create_route.py",
+        "src/workers/order_ingest.py"
+      ],
+      "python_forbidden_imports": [
+        {
+          "modules": [
+            "src.domain.orders.mappers",
+            "src.domain.orders.rules"
+          ],
+          "allow_files": ["src/domain/orders/normalize.py"]
+        }
+      ]
+    }
+  ]
+}
